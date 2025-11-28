@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+<<<<<<< HEAD
 use App\Http\Controllers\PoliController;
 use App\Http\Controllers\DoctorController;
 
@@ -10,16 +11,22 @@ use App\Http\Controllers\DoctorController;
 | Web Routes
 |--------------------------------------------------------------------------
 */
+=======
+>>>>>>> c5a50cb2d95973c93c4a7cbf0daf9dd6bd0558c6
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+<<<<<<< HEAD
 // Dashboard (khusus user yang sudah login & verified)
+=======
+>>>>>>> c5a50cb2d95973c93c4a7cbf0daf9dd6bd0558c6
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+<<<<<<< HEAD
 // Semua route yang membutuhkan login
 Route::middleware('auth')->group(function () {
 
@@ -83,4 +90,14 @@ Route::middleware('auth')->group(function () {
 
 
 // Auth routes (login, register, logout, dll)
+=======
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::resource('polis', App\Http\Controllers\PoliController::class);
+
+});
+
+>>>>>>> c5a50cb2d95973c93c4a7cbf0daf9dd6bd0558c6
 require __DIR__.'/auth.php';
