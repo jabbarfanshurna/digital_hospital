@@ -1,31 +1,52 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-xl font-semibold">Buat Appointment</h2>
+        <h2 class="font-semibold text-xl">Buat Appointment Baru</h2>
     </x-slot>
 
-    <div class="p-6 w-full max-w-lg">
+    <div class="p-6 max-w-xl">
+
+        {{-- Pesan Error --}}
+        @if ($errors->any())
+            <div class="bg-red-200 text-red-800 p-3 rounded mb-4">
+                <ul class="list-disc ml-6">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <form action="{{ route('appointments.store') }}" method="POST">
             @csrf
 
-            <label class="block mb-2">Pilih Dokter</label>
-            <select name="doctor_id" class="form-control mb-4">
-                @foreach($doctors as $d)
-                    <option value="{{ $d->id }}">
-                        {{ $d->user->name }} - ({{ $d->poli->name }})
+            {{-- PILIH DOKTER --}}
+            <label class="block mb-2 font-semibold">Pilih Dokter</label>
+            <select name="doctor_id" class="w-full p-2 border rounded mb-4" required>
+                <option value="">-- pilih dokter --</option>
+                @foreach($doctors as $doctor)
+                    <option value="{{ $doctor->id }}">
+                        {{ $doctor->user->name }} ({{ $doctor->poli->name }})
                     </option>
                 @endforeach
             </select>
 
-            <label>Tanggal</label>
-            <input type="date" name="tanggal" class="form-control mb-4" required>
+            {{-- TANGGAL --}}
+            <label class="block mb-2 font-semibold">Tanggal Konsultasi</label>
+            <input type="date" name="tanggal" class="w-full p-2 border rounded mb-4" required>
 
-            <label>Jam Konsultasi</label>
-            <input type="time" name="jam" class="form-control mb-4" required>
+            {{-- JAM --}}
+            <label class="block mb-2 font-semibold">Jam Konsultasi</label>
+            <input type="time" name="jam" class="w-full p-2 border rounded mb-4" required>
 
-            <label>Keluhan (opsional)</label>
-            <textarea name="keluhan" class="form-control mb-4"></textarea>
+            {{-- KELUHAN --}}
+            <label class="block mb-2 font-semibold">Keluhan (opsional)</label>
+            <textarea name="keluhan" rows="3" class="w-full p-2 border rounded mb-4"></textarea>
 
-            <button class="btn btn-primary">Buat Appointment</button>
+            {{-- SUBMIT --}}
+            <button class="px-4 py-2 bg-blue-600 text-white rounded">
+                Buat Appointment
+            </button>
         </form>
+
     </div>
 </x-app-layout>

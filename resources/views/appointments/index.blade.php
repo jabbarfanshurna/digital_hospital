@@ -1,68 +1,76 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-xl font-semibold">Daftar Appointment</h2>
+        <h2 class="font-semibold text-xl">Daftar Appointment Saya</h2>
     </x-slot>
 
     <div class="p-6">
-        <a href="{{ route('appointments.create') }}" class="btn btn-primary mb-3">
-            + Buat Appointment
-        </a>
 
         @if(session('success'))
-            <div class="alert alert-success mb-3">{{ session('success') }}</div>
+            <div class="bg-green-200 text-green-800 p-3 rounded mb-3">
+                {{ session('success') }}
+            </div>
         @endif
 
-        <table class="table table-bordered w-full">
-            <thead>
+        @if(session('error'))
+            <div class="bg-red-200 text-red-800 p-3 rounded mb-3">
+                {{ session('error') }}
+            </div>
+        @endif
+
+        <a href="{{ route('appointments.create') }}" 
+           class="px-4 py-2 bg-blue-600 text-white rounded mb-4 inline-block">
+           + Buat Appointment Baru
+        </a>
+
+        <table class="table-auto w-full mt-4 border">
+            <thead class="bg-gray-100">
                 <tr>
-                    <th>Dokter</th>
-                    <th>Poli</th>
-                    <th>Tanggal</th>
-                    <th>Jam</th>
-                    <th>Status</th>
-                    <th>Aksi</th>
+                    <th class="p-2 border">Dokter</th>
+                    <th class="p-2 border">Poli</th>
+                    <th class="p-2 border">Tanggal</th>
+                    <th class="p-2 border">Jam</th>
+                    <th class="p-2 border">Status</th>
+                    <th class="p-2 border">Aksi</th>
                 </tr>
             </thead>
+
             <tbody>
-                @foreach($appointments as $a)
-                <tr>
-                    <td>{{ $a->doctor->user->name }}</td>
-                    <td>{{ $a->doctor->poli->name }}</td>
-                    <td>{{ $a->tanggal }}</td>
-                    <td>{{ $a->jam }}</td>
-                    <td>{{ ucfirst($a->status) }}</td>
-                        <td class="flex gap-2">
+                @foreach($appointments as $app)
+                <tr class="border">
+                    <td class="p-2 border">{{ $app->doctor->user->name }}</td>
+                    <td class="p-2 border">{{ $app->poli->name }}</td>
+                    <td class="p-2 border">{{ $app->tanggal }}</td>
+                    <td class="p-2 border">{{ $app->jam }}</td>
 
-                            @if(auth()->user()->role != 'patient')
+                    <td class="p-2 border">
+                        @if($app->status == 'pending')
+                            <span class="text-yellow-600 font-semibold">Pending</span>
+                        @elseif($app->status == 'approved')
+                            <span class="text-green-600 font-semibold">Approved</span>
+                        @else
+                            <span class="text-red-600 font-semibold">Rejected</span>
+                        @endif
+                    </td>
 
-                                @if($a->status == 'pending')
-                                    <form action="{{ route('appointments.approve', $a->id) }}" method="POST">
-                                        @csrf
-                                        <button class="btn btn-success btn-sm">Approve</button>
-                                    </form>
-
-                                    <form action="{{ route('appointments.reject', $a->id) }}" method="POST">
-                                        @csrf
-                                        <button class="btn btn-danger btn-sm">Reject</button>
-                                    </form>
-                                @endif
-
-                            @endif
-
-                            {{-- Tombol batal khusus pasien --}}
-                            @if(auth()->user()->role == 'patient')
-                            <form action="{{ route('appointments.destroy', $a->id) }}" method="POST">
+                    <td class="p-2 border">
+                        @if($app->status == 'pending')
+                            <form action="{{ route('appointments.destroy', $app->id) }}" 
+                                  method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-warning btn-sm">Batal</button>
+                                <button onclick="return confirm('Batalkan appointment?')"
+                                        class="px-3 py-1 bg-red-600 text-white rounded">
+                                        Batalkan
+                                </button>
                             </form>
-                            @endif
-
-                        </td>
-
+                        @else
+                            <span class="text-gray-500">Tidak ada aksi</span>
+                        @endif
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
+
         </table>
     </div>
 </x-app-layout>

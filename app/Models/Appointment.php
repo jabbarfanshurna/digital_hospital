@@ -7,10 +7,13 @@ class Appointment extends Model
     protected $fillable = [
         'user_id',
         'doctor_id',
+        'poli_id',
         'tanggal',
         'jam',
-        'status',
+        'jam_mulai',
+        'jam_selesai',
         'keluhan',
+        'status',
     ];
 
     public function user()
@@ -22,4 +25,10 @@ class Appointment extends Model
     {
         return $this->belongsTo(Doctor::class);
     }
+
+    public function poli()
+    {
+        return $this->belongsTo(Poli::class);
+    }
+
 }
