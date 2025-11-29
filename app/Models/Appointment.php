@@ -1,34 +1,39 @@
+<?php
+
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Appointment extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
-        'user_id',
+        'patient_id',
         'doctor_id',
-        'poli_id',
-        'tanggal',
-        'jam',
-        'jam_mulai',
-        'jam_selesai',
-        'keluhan',
+        'schedule_id',
+        'booking_date',
+        'complaint',
         'status',
+        'admin_note',
     ];
 
-    public function user()
+    // Relasi ke Pasien
+    public function patient()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'patient_id');
     }
 
+    // Relasi ke Dokter
     public function doctor()
     {
-        return $this->belongsTo(Doctor::class);
+        return $this->belongsTo(User::class, 'doctor_id');
     }
 
-    public function poli()
+    // Relasi ke Jadwal
+    public function schedule()
     {
-        return $this->belongsTo(Poli::class);
+        return $this->belongsTo(Schedule::class, 'schedule_id');
     }
-
 }

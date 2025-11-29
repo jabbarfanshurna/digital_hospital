@@ -6,27 +6,21 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-public function up()
-{
-    Schema::create('appointments', function (Blueprint $table) {
-        $table->id();
-        $table->foreignId('user_id'); // pasien
-        $table->foreignId('doctor_id');
-        $table->date('tanggal');
-        $table->time('jam');
-        $table->string('status')->default('pending'); 
-        $table->string('keluhan')->nullable();
-        $table->timestamps();
-    });
-}
+    public function up(): void
+    {
+        Schema::create('appointments', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('patient_id')->constrained('users')->onDelete('cascade'); // Pasien
+            $table->foreignId('doctor_id')->constrained('users')->onDelete('cascade');  // Dokter
+            $table->foreignId('schedule_id')->constrained('schedules')->onDelete('cascade'); // Jadwal
+            $table->date('booking_date'); // Tanggal janji temu
+            $table->text('complaint')->nullable(); // Keluhan singkat
+            $table->enum('status', ['pending', 'approved', 'rejected', 'completed'])->default('pending');
+            $table->text('admin_note')->nullable(); // Alasan reject atau catatan admin
+            $table->timestamps();
+        });
+    }
 
-
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('appointments');
