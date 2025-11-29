@@ -2,24 +2,23 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
     /**
      * Seed the application's database.
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        $this->call([
+            PoliSeeder::class,          // 1. Poli dulu (Master Data)
+            MedicineSeeder::class,      // 2. Obat (Master Data)
+            UserSeeder::class,          // 3. User (Admin, Dokter, Pasien)
+            ScheduleSeeder::class,      // 4. Jadwal Dokter
+            AppointmentSeeder::class,   // 5. Janji Temu (Butuh User & Jadwal)
+            MedicalRecordSeeder::class, // 6. Rekam Medis (Butuh Appointment & Obat)
+            FeedbackSeeder::class,      // 7. Ulasan (Butuh User)
         ]);
     }
 }

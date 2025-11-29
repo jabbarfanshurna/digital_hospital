@@ -11,13 +11,20 @@ use Illuminate\Validation\Rules;
 
 class UserController extends Controller
 {
-    public function index(Request $request)
+   public function index(Request $request)
     {
-        // Fitur filter role sesuai requirement layout point 4
         $query = User::query();
+
+        // Filter by Role
         if ($request->has('role') && $request->role != '') {
             $query->where('role', $request->role);
         }
+
+        // Search by Name (Fitur Baru)
+        if ($request->has('search') && $request->search != '') {
+            $query->where('name', 'like', '%' . $request->search . '%');
+        }
+
         $users = $query->latest()->get();
         return view('dashboard.admin.users.index', compact('users'));
     }

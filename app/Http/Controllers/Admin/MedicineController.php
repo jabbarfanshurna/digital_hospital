@@ -9,11 +9,27 @@ use Illuminate\Support\Facades\Storage;
 
 class MedicineController extends Controller
 {
-    public function index()
-    {
-        $medicines = Medicine::all();
-        return view('dashboard.admin.medicines.index', compact('medicines'));
+   public function index(Request $request)
+{
+    $query = Medicine::query();
+
+    if ($request->has('search') && $request->search != '') {
+        $query->where('name', 'like', '%' . $request->search . '%');
     }
+
+    if ($request->has('status') && $request->status != '') {
+        if ($request->status == 'available') {
+            $query->where('stock', '>', 0)->whereDate('expiry_date', '>', now());
+        } elseif ($request->status == 'out_of_stock') {
+            $query->where('stock', '<=', 0);
+        } elseif ($request->status == 'expired') { // Logika Baru
+            $query->whereDate('expiry_date', '<=', now());
+        }
+    }
+
+    $medicines = $query->latest()->get();
+    return view('dashboard.admin.medicines.index', compact('medicines'));
+}
 
     public function create()
     {
@@ -26,6 +42,7 @@ class MedicineController extends Controller
             'name' => 'required',
             'type' => 'required|in:keras,biasa',
             'stock' => 'required|integer|min:0',
+            'expiry_date' => 'required|date',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 

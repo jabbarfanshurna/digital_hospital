@@ -6,26 +6,22 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up()
+    public function up(): void
     {
         Schema::create('medical_records', function (Blueprint $table) {
             $table->id();
             $table->foreignId('appointment_id')->constrained()->onDelete('cascade');
-            $table->foreignId('doctor_id');
-            $table->foreignId('user_id'); // pasien
-            $table->text('diagnosa');
-            $table->text('tindakan')->nullable();
-            $table->text('catatan')->nullable();
+            $table->foreignId('patient_id')->constrained('users'); // Redundansi untuk query cepat
+            $table->foreignId('doctor_id')->constrained('users');  // Redundansi untuk query cepat
+            $table->text('diagnosis');
+            $table->text('treatment'); // Tindakan medis
+            $table->text('notes')->nullable(); // Catatan tambahan
             $table->timestamps();
         });
     }
 
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('medical_records');
     }
-
 };

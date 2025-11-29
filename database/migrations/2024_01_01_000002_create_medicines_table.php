@@ -14,6 +14,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->enum('type', ['keras', 'biasa']); // Syarat: Tipe obat
             $table->integer('stock')->default(0);
+            $table->date('expiry_date')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
         });
