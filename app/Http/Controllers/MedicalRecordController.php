@@ -6,7 +6,7 @@ use App\Models\MedicalRecord;
 use App\Models\Appointment;
 use App\Models\Medicine;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth; // <--- Baris ini sangat penting!
+use Illuminate\Support\Facades\Auth; 
 use Illuminate\Support\Facades\DB;
 
 class MedicalRecordController extends Controller
@@ -41,9 +41,8 @@ class MedicalRecordController extends Controller
         return view('dashboard.medical_records.index', compact('records'));
     }
 
-    /**
-     * Form Konsultasi (Membuat Rekam Medis untuk Appointment tertentu).
-     */
+    // Form Konsultasi (Membuat Rekam Medis untuk Appointment tertentu).
+
     public function create(Request $request)
     {
         // Pastikan ada appointment_id yang dikirim
@@ -61,9 +60,7 @@ class MedicalRecordController extends Controller
         return view('dashboard.medical_records.create', compact('appointment', 'medicines'));
     }
 
-    /**
-     * Simpan Rekam Medis & Resep.
-     */
+    // Simpan Rekam Medis & Resep.
     public function store(Request $request)
     {
         $request->validate([
@@ -119,9 +116,7 @@ class MedicalRecordController extends Controller
         return redirect()->route('medical_records.index')->with('success', 'Pemeriksaan selesai & Rekam medis disimpan.');
     }
     
-    /**
-     * Show detail (optional, for printing or viewing full details)
-     */
+    //Show detail (optional, for printing or viewing full details)
     public function show(MedicalRecord $medicalRecord)
     {
         // Authorization check

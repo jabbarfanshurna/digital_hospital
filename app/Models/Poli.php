@@ -15,7 +15,6 @@ class Poli extends Model
         'image',
     ];
     
-// ... code sebelumnya ...
     
     public function doctors()
     {

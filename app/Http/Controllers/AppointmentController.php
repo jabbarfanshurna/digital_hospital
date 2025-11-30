@@ -12,9 +12,9 @@ use Carbon\Carbon;
 
 class AppointmentController extends Controller
 {
-    /**
-     * Menampilkan daftar janji temu (Sesuai Role).
-     */
+    
+      //Menampilkan daftar janji temu (Sesuai Role).
+     
     public function index()
     {
         $user = Auth::user();
@@ -34,9 +34,7 @@ class AppointmentController extends Controller
         return view('dashboard.appointments.index', compact('appointments'));
     }
 
-    /**
-     * Menampilkan form buat janji temu (Khusus Pasien).
-     */
+    //Menampilkan form buat janji temu (Khusus Pasien).
     public function create(Request $request)
     {
         // Step 1: Ambil semua poli untuk dropdown
@@ -54,9 +52,7 @@ class AppointmentController extends Controller
         return view('dashboard.appointments.create', compact('polis', 'doctors'));
     }
 
-    /**
-     * Menyimpan janji temu baru.
-     */
+    // Menyimpan janji temu baru.
     public function store(Request $request)
     {
         $request->validate([
@@ -94,9 +90,7 @@ class AppointmentController extends Controller
         return redirect()->route('appointments.index')->with('success', 'Janji temu berhasil dibuat! Mohon tunggu konfirmasi.');
     }
 
-    /**
-     * Update Status (Approve/Reject) oleh Dokter/Admin.
-     */
+    // Update Status (Approve/Reject) oleh Dokter/Admin.
     public function update(Request $request, Appointment $appointment)
     {
         // Pastikan hanya Admin atau Dokter ybs yang bisa update

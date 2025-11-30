@@ -20,9 +20,8 @@ class HomeController extends Controller
         if (Auth::check()) {
             $role = Auth::user()->role;
 
-            // ==========================================
+
             // DASHBOARD ADMIN
-            // ==========================================
             if ($role == 'admin') {
                 // 1. Statistik Dasar
                 $pendingAppointments = Appointment::where('status', 'pending')->count();
@@ -77,9 +76,8 @@ class HomeController extends Controller
                 ));
             }
 
-            // ==========================================
             // DASHBOARD DOKTER (MANAGER)
-            // ==========================================
+
             if ($role == 'manager') {
                 $doctorPending = Appointment::where('doctor_id', Auth::id())
                                             ->where('status', 'pending')
@@ -99,9 +97,8 @@ class HomeController extends Controller
                 return view('dashboard.manager.home', compact('doctorPending', 'todayAppointments', 'recentExaminations'));
             }
 
-            // ==========================================
+
             // DASHBOARD PASIEN (USER)
-            // ==========================================
             $lastAppointment = Appointment::where('patient_id', Auth::id())->latest()->first();
             return view('dashboard.user.home', compact('lastAppointment'));
 

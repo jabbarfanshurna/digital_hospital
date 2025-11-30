@@ -12,40 +12,28 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Doctor\ScheduleController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Public Routes (Guest)
-|--------------------------------------------------------------------------
-*/
+// Public Routes (Guest)
+
 Route::get('/', [PublicController::class, 'index'])->name('home');
 Route::get('/poli-list', [PublicController::class, 'polis'])->name('public.polis');
 Route::get('/doctor-list', [PublicController::class, 'doctors'])->name('public.doctors');
 
-/*
-|--------------------------------------------------------------------------
-| Dashboard Redirect
-|--------------------------------------------------------------------------
-*/
+// Dashboard Redirect
+
 Route::get('/dashboard', [HomeController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-/*
-|--------------------------------------------------------------------------
-| Authenticated User Routes (Profile)
-|--------------------------------------------------------------------------
-*/
+// Authenticated User Routes (Profile)
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-/*
-|--------------------------------------------------------------------------
-| Shared Routes (User, Doctor, Admin)
-|--------------------------------------------------------------------------
-*/
+// Shared Routes (User, Doctor, Admin)
+
 Route::middleware(['auth'])->group(function () {
     // Appointment Booking & List
     Route::get('/appointments/create', [AppointmentController::class, 'create'])->name('appointments.create');
@@ -61,11 +49,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/feedback', [FeedbackController::class, 'store'])->name('feedback.store');
 });
 
-/*
-|--------------------------------------------------------------------------
-| Doctor Routes (Manager)
-|--------------------------------------------------------------------------
-*/
+ //Doctor Routes (Manager)
+
 Route::middleware(['auth', 'manager'])->prefix('doctor')->name('doctor.')->group(function () {
     // Schedule Management
     Route::resource('schedules', ScheduleController::class);
@@ -75,11 +60,8 @@ Route::middleware(['auth', 'manager'])->prefix('doctor')->name('doctor.')->group
     Route::post('/medical-records', [MedicalRecordController::class, 'store'])->name('medical_records.store');
 });
 
-/*
-|--------------------------------------------------------------------------
-| Admin Routes
-|--------------------------------------------------------------------------
-*/
+//Admin Routes
+
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     // Master Data CMS
     Route::resource('polis', PoliController::class);

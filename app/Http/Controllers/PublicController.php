@@ -8,9 +8,7 @@ use Illuminate\Http\Request;
 
 class PublicController extends Controller
 {
-    /**
-     * Halaman Beranda (Landing Page).
-     */
+    // Halaman Beranda (Landing Page).
     public function index()
     {
         // Ambil 3 poli untuk ditampilkan di halaman depan sebagai highlight
@@ -18,18 +16,14 @@ class PublicController extends Controller
         return view('welcome', compact('featured_polis'));
     }
 
-    /**
-     * Halaman Daftar Poli.
-     */
+    // Halaman Daftar Poli.
     public function polis()
     {
         $polis = Poli::all();
         return view('public.polis', compact('polis'));
     }
 
-    /**
-     * Halaman Daftar Dokter & Jadwal.
-     */
+    // Halaman Daftar Dokter & Jadwal.
     public function doctors()
     {
         // Ambil user dengan role 'manager' (Dokter) beserta relasi poli dan jadwalnya

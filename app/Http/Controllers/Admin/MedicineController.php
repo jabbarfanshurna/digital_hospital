@@ -22,7 +22,7 @@ class MedicineController extends Controller
             $query->where('stock', '>', 0)->whereDate('expiry_date', '>', now());
         } elseif ($request->status == 'out_of_stock') {
             $query->where('stock', '<=', 0);
-        } elseif ($request->status == 'expired') { // Logika Baru
+        } elseif ($request->status == 'expired') { 
             $query->whereDate('expiry_date', '<=', now());
         }
     }
