@@ -16,7 +16,7 @@
 
             <div class="flex justify-end mb-4">
                 <form method="GET" action="{{ route('medical_records.index') }}" class="flex gap-2">
-                    <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari nama pasien..." class="border-gray-300 rounded-md text-sm w-64 focus:ring-indigo-500 focus:border-indigo-500">
+                    <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari nama pasien..." class="border-gray-300 rounded-md text-sm w-64 focus:ring-teal-500 focus:border-teal-500">
                     <button type="submit" class="bg-gray-800 text-white px-4 py-2 rounded-md text-sm hover:bg-gray-700">Cari</button>
                 </form>
             </div>
@@ -54,7 +54,7 @@
                                 @endforeach
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                <a href="{{ route('medical_records.show', $record->id) }}" class="text-indigo-600 hover:text-indigo-900">Detail</a>
+                                <a href="{{ route('medical_records.show', $record->id) }}" class="text-teal-600 hover:text-teal-900">Detail</a>
                             </td>
                         </tr>
                         @empty

@@ -21,7 +21,7 @@
                             
                             <div>
                                 <x-input-label for="type" :value="__('Type')" />
-                                <select name="type" id="type" class="block mt-1 w-full border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                                <select name="type" id="type" class="block mt-1 w-full border-gray-300 rounded-lg shadow-sm focus:border-teal-500 focus:ring-teal-500">
                                     <option value="biasa" {{ old('type', $medicine->type) == 'biasa' ? 'selected' : '' }}>Biasa</option>
                                     <option value="keras" {{ old('type', $medicine->type) == 'keras' ? 'selected' : '' }}>Keras</option>
                                 </select>
@@ -44,7 +44,7 @@
                         <div class="space-y-6">
                             <div>
                                 <x-input-label for="description" :value="__('Description')" />
-                                <textarea id="description" name="description" rows="4" class="block mt-1 w-full border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500">{{ old('description', $medicine->description) }}</textarea>
+                                <textarea id="description" name="description" rows="4" class="block mt-1 w-full border-gray-300 rounded-lg shadow-sm focus:border-teal-500 focus:ring-teal-500">{{ old('description', $medicine->description) }}</textarea>
                                 <x-input-error :messages="$errors->get('description')" class="mt-2" />
                             </div>
 
@@ -57,14 +57,14 @@
 
                             <div>
                                 <x-input-label for="image" :value="__('Update Image (Optional)')" />
-                                <input type="file" name="image" class="block mt-1 w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 transition">
+                                <input type="file" name="image" class="block mt-1 w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-teal-50 file:text-teal-700 hover:file:bg-teal-100 transition">
                                 <x-input-error :messages="$errors->get('image')" class="mt-2" />
                             </div>
                         </div>
                     </div>
 
                     <div class="flex items-center gap-4 mt-8">
-                        <x-primary-button class="bg-indigo-600 hover:bg-indigo-700">Update Medicine</x-primary-button>
+                        <x-primary-button class="bg-teal-600 hover:bg-teal-700">Update Medicine</x-primary-button>
                         <a href="{{ route('admin.medicines.index') }}" class="text-gray-600 hover:text-gray-900 text-sm font-medium">Cancel</a>
                     </div>
                 </form>

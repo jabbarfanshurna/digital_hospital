@@ -25,7 +25,7 @@
                     <form method="GET" action="{{ route('admin.medicines.index') }}" class="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
                         
                         {{-- Filter Status Stok --}}
-                        <select name="status" class="border-gray-300 rounded-md text-sm focus:ring-indigo-500 focus:border-indigo-500" onchange="this.form.submit()">
+                        <select name="status" class="border-gray-300 rounded-md text-sm focus:ring-teal-500 focus:border-teal-500" onchange="this.form.submit()">
                             <option value="">Semua Status</option>
                             <option value="available" {{ request('status') == 'available' ? 'selected' : '' }}>Tersedia</option>
                             <option value="out_of_stock" {{ request('status') == 'out_of_stock' ? 'selected' : '' }}>Stok Habis</option>
@@ -33,14 +33,14 @@
 
                         {{-- Input Pencarian --}}
                         <div class="flex gap-2">
-                            <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari obat..." class="border-gray-300 rounded-md text-sm w-full md:w-48 focus:ring-indigo-500 focus:border-indigo-500">
+                            <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari obat..." class="border-gray-300 rounded-md text-sm w-full md:w-48 focus:ring-teal-500 focus:border-teal-500">
                             <button type="submit" class="bg-gray-800 text-white px-3 py-2 rounded-md text-sm hover:bg-gray-700 transition">Cari</button>
                         </div>
                     </form>
                 </div>
                 
                 {{-- Tombol Tambah Obat --}}
-                <a href="{{ route('admin.medicines.create') }}" class="w-full md:w-auto text-center px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition shadow-sm">
+                <a href="{{ route('admin.medicines.create') }}" class="w-full md:w-auto text-center px-4 py-2 bg-teal-600 text-white rounded-md hover:bg-teal-700 transition shadow-sm">
                     + Add New Medicine
                 </a>
             </div>
@@ -78,7 +78,7 @@
                                     {{ $medicine->stock }} {{ $medicine->stock == 0 ? '(Habis)' : '' }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                    <a href="{{ route('admin.medicines.edit', $medicine->id) }}" class="text-indigo-600 hover:text-indigo-900 mr-3">Edit</a>
+                                    <a href="{{ route('admin.medicines.edit', $medicine->id) }}" class="text-teal-600 hover:text-teal-900 mr-3">Edit</a>
                                     <form action="{{ route('admin.medicines.destroy', $medicine->id) }}" method="POST" class="inline-block">
                                         @csrf
                                         @method('DELETE')

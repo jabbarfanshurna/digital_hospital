@@ -37,7 +37,7 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
                             @foreach($doctors as $doctor)
                                 <label class="border p-4 rounded-lg cursor-pointer hover:bg-gray-50 flex items-start">
-                                    <input type="radio" name="doctor_id" value="{{ $doctor->id }}" class="mt-1 mr-3 text-indigo-600" required>
+                                    <input type="radio" name="doctor_id" value="{{ $doctor->id }}" class="mt-1 mr-3 text-teal-600" required>
                                     <div>
                                         <div class="font-bold text-gray-900">{{ $doctor->name }}</div>
                                         <div class="text-sm text-gray-500 mt-1">Jadwal Praktik:</div>

@@ -16,7 +16,7 @@
 
             @if(Auth::user()->role === 'user')
                 <div class="mb-4 flex justify-end">
-                    <a href="{{ route('appointments.create') }}" class="bg-indigo-600 text-white px-4 py-2 rounded-md text-sm hover:bg-indigo-700">Buat Janji Baru</a>
+                    <a href="{{ route('appointments.create') }}" class="bg-teal-600 text-white px-4 py-2 rounded-md text-sm hover:bg-teal-700">Buat Janji Baru</a>
                 </div>
             @endif
 

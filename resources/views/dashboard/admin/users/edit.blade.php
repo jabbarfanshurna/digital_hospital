@@ -16,7 +16,7 @@
                         
                         <div>
                             <x-input-label for="role" :value="__('Role')" />
-                            <select id="role" name="role" x-model="role" class="block mt-1 w-full border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                            <select id="role" name="role" x-model="role" class="block mt-1 w-full border-gray-300 rounded-lg shadow-sm focus:border-teal-500 focus:ring-teal-500">
                                 <option value="user">Pasien (User)</option>
                                 <option value="manager">Dokter (Manager)</option>
                                 <option value="admin">Admin</option>
@@ -26,7 +26,7 @@
 
                         <div x-show="role === 'manager'" style="display: none;" x-transition>
                             <x-input-label for="poli_id" :value="__('Assign to Poli')" />
-                            <select id="poli_id" name="poli_id" class="block mt-1 w-full border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                            <select id="poli_id" name="poli_id" class="block mt-1 w-full border-gray-300 rounded-lg shadow-sm focus:border-teal-500 focus:ring-teal-500">
                                 <option value="">-- Select Poli --</option>
                                 @foreach($polis as $poli)
                                     <option value="{{ $poli->id }}" {{ (old('poli_id', $user->poli_id) == $poli->id) ? 'selected' : '' }}>
@@ -66,7 +66,7 @@
                     </div>
 
                     <div class="flex items-center gap-4 mt-8">
-                        <x-primary-button class="bg-indigo-600 hover:bg-indigo-700">Update User</x-primary-button>
+                        <x-primary-button class="bg-teal-600 hover:bg-teal-700">Update User</x-primary-button>
                         <a href="{{ route('admin.users.index') }}" class="text-gray-600 hover:text-gray-900 text-sm font-medium">Cancel</a>
                     </div>
                 </form>

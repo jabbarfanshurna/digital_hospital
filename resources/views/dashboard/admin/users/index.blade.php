@@ -9,7 +9,7 @@
             </div>
             
             {{-- Tombol Tambah User (Satu-satunya) --}}
-            <a href="{{ route('admin.users.create') }}" class="inline-flex items-center px-5 py-2.5 bg-indigo-600 border border-transparent rounded-xl font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 active:bg-indigo-900 focus:outline-none focus:border-indigo-900 focus:ring ring-indigo-300 disabled:opacity-25 transition ease-in-out duration-150 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+            <a href="{{ route('admin.users.create') }}" class="inline-flex items-center px-5 py-2.5 bg-teal-600 border border-transparent rounded-xl font-semibold text-xs text-white uppercase tracking-widest hover:bg-teal-700 active:bg-teal-900 focus:outline-none focus:border-teal-900 focus:ring ring-teal-300 disabled:opacity-25 transition ease-in-out duration-150 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
                 Create New User
             </a>
@@ -38,7 +38,7 @@
                     <form method="GET" action="{{ route('admin.users.index') }}" class="flex flex-col sm:flex-row gap-4">
                         
                         <div class="relative min-w-[150px]">
-                            <select name="role" class="block w-full pl-3 pr-10 py-2 text-sm border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 rounded-lg shadow-sm" onchange="this.form.submit()">
+                            <select name="role" class="block w-full pl-3 pr-10 py-2 text-sm border-gray-300 focus:outline-none focus:ring-teal-500 focus:border-teal-500 rounded-lg shadow-sm" onchange="this.form.submit()">
                                 <option value="">Semua Role</option>
                                 <option value="admin" {{ request('role') == 'admin' ? 'selected' : '' }}>Admin</option>
                                 <option value="manager" {{ request('role') == 'manager' ? 'selected' : '' }}>Dokter</option>
@@ -50,7 +50,7 @@
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                             </div>
-                            <input type="text" name="search" value="{{ request('search') }}" class="block w-full pl-10 pr-20 py-2 border-gray-300 rounded-lg leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm shadow-sm" placeholder="Cari nama user atau email...">
+                            <input type="text" name="search" value="{{ request('search') }}" class="block w-full pl-10 pr-20 py-2 border-gray-300 rounded-lg leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-teal-500 focus:border-teal-500 sm:text-sm shadow-sm" placeholder="Cari nama user atau email...">
                             <div class="absolute inset-y-0 right-0 flex py-1.5 pr-1.5">
                                 <button type="submit" class="inline-flex items-center border border-gray-200 rounded px-2 text-sm font-sans font-medium text-gray-400 hover:text-gray-500">
                                     Cari
@@ -81,7 +81,7 @@
                                     <div class="flex items-center">
                                         {{-- Avatar Inisial Modern --}}
                                         <div class="flex-shrink-0 h-10 w-10">
-                                            <div class="h-10 w-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold shadow-sm">
+                                            <div class="h-10 w-10 rounded-full bg-gradient-to-br from-teal-600 to-green-600 flex items-center justify-center text-gray font-bold shadow-sm">
                                                 {{ substr($user->name, 0, 1) }}
                                             </div>
                                         </div>
@@ -120,7 +120,7 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                     <div class="flex justify-end gap-3">
-                                        <a href="{{ route('admin.users.edit', $user->id) }}" class="text-indigo-600 hover:text-indigo-900 font-semibold transition">Edit</a>
+                                        <a href="{{ route('admin.users.edit', $user->id) }}" class="text-teal-600 hover:text-teal-900 font-semibold transition">Edit</a>
                                         
                                         @if(Auth::id() !== $user->id)
                                             <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" class="inline">

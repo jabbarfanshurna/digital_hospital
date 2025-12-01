@@ -93,7 +93,7 @@
                     </div>
 
                     <div class="flex justify-end pt-4 border-t">
-                        <x-primary-button class="bg-indigo-600 hover:bg-indigo-700">
+                        <x-primary-button class="bg-teal-600 hover:bg-teal-700">
                             {{ __('Simpan & Selesaikan Pemeriksaan') }}
                         </x-primary-button>
                     </div>

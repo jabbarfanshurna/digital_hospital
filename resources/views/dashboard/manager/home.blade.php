@@ -12,7 +12,7 @@
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 border-l-4 border-yellow-500">
                     <div class="text-sm text-gray-500">Menunggu Validasi</div>
                     <div class="text-3xl font-bold text-gray-800">{{ $doctorPending }}</div>
-                    <a href="{{ route('appointments.index') }}" class="text-xs text-indigo-600 hover:underline mt-2 inline-block">Lihat Daftar</a>
+                    <a href="{{ route('appointments.index') }}" class="text-xs text-teal-600 hover:underline mt-2 inline-block">Lihat Daftar</a>
                 </div>
 
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 border-l-4 border-green-500">
@@ -20,7 +20,7 @@
                     <div class="text-3xl font-bold text-gray-800">{{ $todayAppointments->count() }}</div>
                 </div>
 
-                <a href="{{ route('doctor.schedules.index') }}" class="bg-indigo-600 text-white overflow-hidden shadow-sm sm:rounded-lg p-6 flex flex-col justify-center items-center hover:bg-indigo-700 transition">
+                <a href="{{ route('doctor.schedules.index') }}" class="bg-teal-600 text-white overflow-hidden shadow-sm sm:rounded-lg p-6 flex flex-col justify-center items-center hover:bg-teal-700 transition">
                     <svg class="w-8 h-8 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     <span class="font-bold">Atur Jadwal</span>
                 </a>
@@ -57,7 +57,7 @@
                     @endforelse
                     
                     @if($recentExaminations->count() > 0)
-                        <a href="{{ route('medical_records.index') }}" class="block mt-4 text-center text-sm text-indigo-600 hover:underline">Lihat Semua Riwayat</a>
+                        <a href="{{ route('medical_records.index') }}" class="block mt-4 text-center text-sm text-teal-600 hover:underline">Lihat Semua Riwayat</a>
                     @endif
                 </div>
             </div>

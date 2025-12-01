@@ -10,9 +10,9 @@
     
     <x-public-navbar />
 
-    <div class="pt-32 pb-20 bg-gradient-to-r from-indigo-700 to-blue-600 text-white text-center px-4">
-        <h1 class="text-4xl font-extrabold tracking-tight mb-4">Layanan Medis & Spesialisasi</h1>
-        <p class="text-indigo-100 text-lg max-w-2xl mx-auto">
+    <div class="pt-32 pb-20 bg-gradient-to-r from-teal-700 to-blue-600 text-white text-center px-4">
+        <h1 class="text-4xl font-extrabold tracking-tight text-gray-800 mb-4">Layanan Medis & Spesialisasi</h1>
+        <p class="text-teal-700 text-lg max-w-2xl mx-auto">
             Fasilitas lengkap dengan standar pelayanan terbaik untuk kenyamanan pasien.
         </p>
     </div>
@@ -26,8 +26,8 @@
                     @if($poli->image)
                         <img src="{{ asset('storage/' . $poli->image) }}" alt="{{ $poli->name }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     @else
-                        <div class="w-full h-full flex items-center justify-center bg-indigo-50">
-                            <svg class="w-16 h-16 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                        <div class="w-full h-full flex items-center justify-center bg-teal-50">
+                            <svg class="w-16 h-16 text-teal-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
                         </div>
                     @endif
                     <div class="absolute inset-0 bg-black bg-opacity-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -40,7 +40,7 @@
                     </p>
                     <div class="border-t border-gray-100 pt-4 flex justify-between items-center">
                         <span class="text-xs font-semibold text-green-600 bg-green-50 px-3 py-1 rounded-full uppercase tracking-wide">Tersedia</span>
-                        <a href="{{ route('public.doctors') }}" class="text-indigo-600 font-semibold text-sm hover:text-indigo-800">Cari Dokter &rarr;</a>
+                        <a href="{{ route('public.doctors') }}" class="text-teal-600 font-semibold text-sm hover:text-teal-800">Cari Dokter &rarr;</a>
                     </div>
                 </div>
             </div>

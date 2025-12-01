@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="flex justify-between mb-4">
                 <h3 class="text-lg font-medium text-gray-900">List of Poli</h3>
-                <a href="{{ route('admin.polis.create') }}" class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">Add New Poli</a>
+                <a href="{{ route('admin.polis.create') }}" class="px-4 py-2 bg-teal-600 text-white rounded-md hover:bg-teal-700">Add New Poli</a>
             </div>
 
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -35,7 +35,7 @@
                             <td class="px-6 py-4 whitespace-nowrap font-medium">{{ $poli->name }}</td>
                             <td class="px-6 py-4">{{ Str::limit($poli->description, 50) }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                <a href="{{ route('admin.polis.edit', $poli->id) }}" class="text-indigo-600 hover:text-indigo-900 mr-3">Edit</a>
+                                <a href="{{ route('admin.polis.edit', $poli->id) }}" class="text-teal-600 hover:text-teal-900 mr-3">Edit</a>
                                 <form action="{{ route('admin.polis.destroy', $poli->id) }}" method="POST" class="inline-block">
                                     @csrf
                                     @method('DELETE')

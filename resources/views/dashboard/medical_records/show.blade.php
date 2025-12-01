@@ -8,7 +8,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-8">
                 
                 <div class="text-center mb-8 border-b pb-4">
-                    <h1 class="text-2xl font-bold text-indigo-700">Digital Hospital</h1>
+                    <h1 class="text-2xl font-bold text-teal-700">Digital Hospital</h1>
                     <p class="text-gray-500">Laporan Pemeriksaan Medis</p>
                     <p class="text-sm text-gray-400">Tanggal: {{ $medicalRecord->created_at->format('d F Y') }}</p>
                 </div>
@@ -70,7 +70,7 @@
 
                 <div class="mt-8 flex justify-between">
                     <a href="{{ route('medical_records.index') }}" class="text-gray-600 hover:text-gray-900 underline">Kembali</a>
-                    <button onclick="window.print()" class="bg-indigo-600 text-white px-4 py-2 rounded shadow hover:bg-indigo-700">Cetak Laporan</button>
+                    <button onclick="window.print()" class="bg-teal-600 text-white px-4 py-2 rounded shadow hover:bg-teal-700">Cetak Laporan</button>
                 </div>
 
             </div>
